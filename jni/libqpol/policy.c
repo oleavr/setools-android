@@ -321,21 +321,7 @@ int qpol_binpol_version(FILE * fp)
 
 int qpol_is_file_binpol(FILE * fp)
 {
-	int rt;
-	size_t sz;
-	__u32 ubuf;
-
-	sz = fread(&ubuf, sizeof(__u32), 1, fp);
-	if (sz != 1)
-		rt = 0;
-
-	ubuf = le32_to_cpu(ubuf);
-	if (ubuf == SELINUX_MAGIC)
-		rt = 1;
-	else
-		rt = 0;
-	rewind(fp);
-	return rt;
+	return 1;
 }
 
 int qpol_is_data_mod_pkg(char * data)
