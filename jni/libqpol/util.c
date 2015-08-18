@@ -38,6 +38,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <selinux/selinux.h>
+
 const char *libqpol_get_version(void)
 {
 	return LIBQPOL_VERSION_STRING;
@@ -47,7 +49,7 @@ static int search_policy_source_file(char **path)
 {
 	int error;
 	char *source_path;
-	if (asprintf(&source_path, "/policy.conf") < 0) {
+	if (asprintf(&source_path, "/policy/policy.conf") < 0) {
 		return -1;
 	}
 	if (access(source_path, R_OK) < 0) {
@@ -82,7 +84,7 @@ static int get_binpol_version(const char *policy_fname)
 
 static int search_policy_binary_file(char **path)
 {
-	const char *binary_path = "/sepolicy";
+	const char *binary_path = "/sys/fs/selinux/policy";
 
 	int expected_version = -1, latest_version = -1;
 #ifdef LIBSELINUX
@@ -93,31 +95,45 @@ static int search_policy_binary_file(char **path)
 	}
 #endif
 
+	glob_t glob_buf;
 	struct stat fs;
 	int rt, error = 0, retval = -1;
-
-	if (stat(binary_path, &fs) != 0) {
-		error = errno;
-		goto cleanup;
+	size_t i;
+	char *pattern = NULL;
+	if (asprintf(&pattern, "%s.*", binary_path) < 0) {
+		return -1;
+	}
+	glob_buf.gl_offs = 1;
+	glob_buf.gl_pathc = 0;
+	rt = glob(pattern, GLOB_DOOFFS, NULL, &glob_buf);
+	if (rt != 0 && rt != GLOB_NOMATCH) {
+		errno = EIO;
+		return -1;
 	}
 
-	if (!S_ISREG(fs.st_mode)) {
-		error = EBADF;
-		goto cleanup;
-	}
-
-	if ((rt = get_binpol_version(binary_path)) < 0) {
-		error = errno;
-		goto cleanup;
-	}
-
-	if (rt > latest_version || rt == expected_version) {
-		free(*path);
-		if ((*path = strdup(binary_path)) == NULL) {
+	for (i = 0; i < glob_buf.gl_pathc; i++) {
+		char *p = glob_buf.gl_pathv[i + glob_buf.gl_offs];
+		if (stat(p, &fs) != 0) {
 			error = errno;
 			goto cleanup;
 		}
-		if (rt != expected_version) {
+		if (S_ISDIR(fs.st_mode))
+			continue;
+
+		if ((rt = get_binpol_version(p)) < 0) {
+			error = errno;
+			goto cleanup;
+		}
+
+		if (rt > latest_version || rt == expected_version) {
+			free(*path);
+			if ((*path = strdup(p)) == NULL) {
+				error = errno;
+				goto cleanup;
+			}
+			if (rt == expected_version) {
+				break;
+			}
 			latest_version = rt;
 		}
 	}
@@ -128,6 +144,8 @@ static int search_policy_binary_file(char **path)
 		retval = 0;
 	}
       cleanup:
+	free(pattern);
+	globfree(&glob_buf);
 	if (retval == -1) {
 		errno = error;
 	}

@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison interface for Yacc-like parsers in C
-   
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,107 +26,126 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
+#endif
 
-/* Tokens.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     PATH = 258,
-     FILENAME = 259,
-     CLONE = 260,
-     COMMON = 261,
-     CLASS = 262,
-     CONSTRAIN = 263,
-     VALIDATETRANS = 264,
-     INHERITS = 265,
-     SID = 266,
-     ROLE = 267,
-     ROLES = 268,
-     TYPEALIAS = 269,
-     TYPEATTRIBUTE = 270,
-     TYPEBOUNDS = 271,
-     TYPE = 272,
-     TYPES = 273,
-     ALIAS = 274,
-     ATTRIBUTE = 275,
-     BOOL = 276,
-     IF = 277,
-     ELSE = 278,
-     TYPE_TRANSITION = 279,
-     TYPE_MEMBER = 280,
-     TYPE_CHANGE = 281,
-     ROLE_TRANSITION = 282,
-     RANGE_TRANSITION = 283,
-     SENSITIVITY = 284,
-     DOMINANCE = 285,
-     DOM = 286,
-     DOMBY = 287,
-     INCOMP = 288,
-     CATEGORY = 289,
-     LEVEL = 290,
-     RANGE = 291,
-     MLSCONSTRAIN = 292,
-     MLSVALIDATETRANS = 293,
-     USER = 294,
-     NEVERALLOW = 295,
-     ALLOW = 296,
-     AUDITALLOW = 297,
-     AUDITDENY = 298,
-     DONTAUDIT = 299,
-     SOURCE = 300,
-     TARGET = 301,
-     SAMEUSER = 302,
-     FSCON = 303,
-     PORTCON = 304,
-     NETIFCON = 305,
-     NODECON = 306,
-     PIRQCON = 307,
-     IOMEMCON = 308,
-     IOPORTCON = 309,
-     PCIDEVICECON = 310,
-     FSUSEXATTR = 311,
-     FSUSETASK = 312,
-     FSUSETRANS = 313,
-     FSUSEPSID = 314,
-     GENFSCON = 315,
-     U1 = 316,
-     U2 = 317,
-     U3 = 318,
-     R1 = 319,
-     R2 = 320,
-     R3 = 321,
-     T1 = 322,
-     T2 = 323,
-     T3 = 324,
-     L1 = 325,
-     L2 = 326,
-     H1 = 327,
-     H2 = 328,
-     NOT = 329,
-     AND = 330,
-     OR = 331,
-     XOR = 332,
-     CTRUE = 333,
-     CFALSE = 334,
-     IDENTIFIER = 335,
-     NUMBER = 336,
-     EQUALS = 337,
-     NOTEQUAL = 338,
-     IPV4_ADDR = 339,
-     IPV6_ADDR = 340,
-     MODULE = 341,
-     VERSION_IDENTIFIER = 342,
-     REQUIRE = 343,
-     OPTIONAL = 344,
-     POLICYCAP = 345,
-     PERMISSIVE = 346
-   };
+  enum yytokentype
+  {
+    PATH = 258,
+    FILENAME = 259,
+    CLONE = 260,
+    COMMON = 261,
+    CLASS = 262,
+    CONSTRAIN = 263,
+    VALIDATETRANS = 264,
+    INHERITS = 265,
+    SID = 266,
+    ROLE = 267,
+    ROLEATTRIBUTE = 268,
+    ATTRIBUTE_ROLE = 269,
+    ROLES = 270,
+    TYPEALIAS = 271,
+    TYPEATTRIBUTE = 272,
+    TYPEBOUNDS = 273,
+    TYPE = 274,
+    TYPES = 275,
+    ALIAS = 276,
+    ATTRIBUTE = 277,
+    BOOL = 278,
+    TUNABLE = 279,
+    IF = 280,
+    ELSE = 281,
+    TYPE_TRANSITION = 282,
+    TYPE_MEMBER = 283,
+    TYPE_CHANGE = 284,
+    ROLE_TRANSITION = 285,
+    RANGE_TRANSITION = 286,
+    SENSITIVITY = 287,
+    DOMINANCE = 288,
+    DOM = 289,
+    DOMBY = 290,
+    INCOMP = 291,
+    CATEGORY = 292,
+    LEVEL = 293,
+    RANGE = 294,
+    MLSCONSTRAIN = 295,
+    MLSVALIDATETRANS = 296,
+    USER = 297,
+    NEVERALLOW = 298,
+    ALLOW = 299,
+    AUDITALLOW = 300,
+    AUDITDENY = 301,
+    DONTAUDIT = 302,
+    SOURCE = 303,
+    TARGET = 304,
+    SAMEUSER = 305,
+    FSCON = 306,
+    PORTCON = 307,
+    NETIFCON = 308,
+    NODECON = 309,
+    PIRQCON = 310,
+    IOMEMCON = 311,
+    IOPORTCON = 312,
+    PCIDEVICECON = 313,
+    FSUSEXATTR = 314,
+    FSUSETASK = 315,
+    FSUSETRANS = 316,
+    FSUSEPSID = 317,
+    GENFSCON = 318,
+    U1 = 319,
+    U2 = 320,
+    U3 = 321,
+    R1 = 322,
+    R2 = 323,
+    R3 = 324,
+    T1 = 325,
+    T2 = 326,
+    T3 = 327,
+    L1 = 328,
+    L2 = 329,
+    H1 = 330,
+    H2 = 331,
+    NOT = 332,
+    AND = 333,
+    OR = 334,
+    XOR = 335,
+    CTRUE = 336,
+    CFALSE = 337,
+    IDENTIFIER = 338,
+    NUMBER = 339,
+    EQUALS = 340,
+    NOTEQUAL = 341,
+    IPV4_ADDR = 342,
+    IPV6_ADDR = 343,
+    MODULE = 344,
+    VERSION_IDENTIFIER = 345,
+    REQUIRE = 346,
+    OPTIONAL = 347,
+    POLICYCAP = 348,
+    PERMISSIVE = 349,
+    FILESYSTEM = 350,
+    DEFAULT_USER = 351,
+    DEFAULT_ROLE = 352,
+    DEFAULT_TYPE = 353,
+    DEFAULT_RANGE = 354,
+    LOW_HIGH = 355,
+    LOW = 356,
+    HIGH = 357
+  };
 #endif
 /* Tokens.  */
 #define PATH 258
@@ -139,111 +158,120 @@
 #define INHERITS 265
 #define SID 266
 #define ROLE 267
-#define ROLES 268
-#define TYPEALIAS 269
-#define TYPEATTRIBUTE 270
-#define TYPEBOUNDS 271
-#define TYPE 272
-#define TYPES 273
-#define ALIAS 274
-#define ATTRIBUTE 275
-#define BOOL 276
-#define IF 277
-#define ELSE 278
-#define TYPE_TRANSITION 279
-#define TYPE_MEMBER 280
-#define TYPE_CHANGE 281
-#define ROLE_TRANSITION 282
-#define RANGE_TRANSITION 283
-#define SENSITIVITY 284
-#define DOMINANCE 285
-#define DOM 286
-#define DOMBY 287
-#define INCOMP 288
-#define CATEGORY 289
-#define LEVEL 290
-#define RANGE 291
-#define MLSCONSTRAIN 292
-#define MLSVALIDATETRANS 293
-#define USER 294
-#define NEVERALLOW 295
-#define ALLOW 296
-#define AUDITALLOW 297
-#define AUDITDENY 298
-#define DONTAUDIT 299
-#define SOURCE 300
-#define TARGET 301
-#define SAMEUSER 302
-#define FSCON 303
-#define PORTCON 304
-#define NETIFCON 305
-#define NODECON 306
-#define PIRQCON 307
-#define IOMEMCON 308
-#define IOPORTCON 309
-#define PCIDEVICECON 310
-#define FSUSEXATTR 311
-#define FSUSETASK 312
-#define FSUSETRANS 313
-#define FSUSEPSID 314
-#define GENFSCON 315
-#define U1 316
-#define U2 317
-#define U3 318
-#define R1 319
-#define R2 320
-#define R3 321
-#define T1 322
-#define T2 323
-#define T3 324
-#define L1 325
-#define L2 326
-#define H1 327
-#define H2 328
-#define NOT 329
-#define AND 330
-#define OR 331
-#define XOR 332
-#define CTRUE 333
-#define CFALSE 334
-#define IDENTIFIER 335
-#define NUMBER 336
-#define EQUALS 337
-#define NOTEQUAL 338
-#define IPV4_ADDR 339
-#define IPV6_ADDR 340
-#define MODULE 341
-#define VERSION_IDENTIFIER 342
-#define REQUIRE 343
-#define OPTIONAL 344
-#define POLICYCAP 345
-#define PERMISSIVE 346
+#define ROLEATTRIBUTE 268
+#define ATTRIBUTE_ROLE 269
+#define ROLES 270
+#define TYPEALIAS 271
+#define TYPEATTRIBUTE 272
+#define TYPEBOUNDS 273
+#define TYPE 274
+#define TYPES 275
+#define ALIAS 276
+#define ATTRIBUTE 277
+#define BOOL 278
+#define TUNABLE 279
+#define IF 280
+#define ELSE 281
+#define TYPE_TRANSITION 282
+#define TYPE_MEMBER 283
+#define TYPE_CHANGE 284
+#define ROLE_TRANSITION 285
+#define RANGE_TRANSITION 286
+#define SENSITIVITY 287
+#define DOMINANCE 288
+#define DOM 289
+#define DOMBY 290
+#define INCOMP 291
+#define CATEGORY 292
+#define LEVEL 293
+#define RANGE 294
+#define MLSCONSTRAIN 295
+#define MLSVALIDATETRANS 296
+#define USER 297
+#define NEVERALLOW 298
+#define ALLOW 299
+#define AUDITALLOW 300
+#define AUDITDENY 301
+#define DONTAUDIT 302
+#define SOURCE 303
+#define TARGET 304
+#define SAMEUSER 305
+#define FSCON 306
+#define PORTCON 307
+#define NETIFCON 308
+#define NODECON 309
+#define PIRQCON 310
+#define IOMEMCON 311
+#define IOPORTCON 312
+#define PCIDEVICECON 313
+#define FSUSEXATTR 314
+#define FSUSETASK 315
+#define FSUSETRANS 316
+#define FSUSEPSID 317
+#define GENFSCON 318
+#define U1 319
+#define U2 320
+#define U3 321
+#define R1 322
+#define R2 323
+#define R3 324
+#define T1 325
+#define T2 326
+#define T3 327
+#define L1 328
+#define L2 329
+#define H1 330
+#define H2 331
+#define NOT 332
+#define AND 333
+#define OR 334
+#define XOR 335
+#define CTRUE 336
+#define CFALSE 337
+#define IDENTIFIER 338
+#define NUMBER 339
+#define EQUALS 340
+#define NOTEQUAL 341
+#define IPV4_ADDR 342
+#define IPV6_ADDR 343
+#define MODULE 344
+#define VERSION_IDENTIFIER 345
+#define REQUIRE 346
+#define OPTIONAL 347
+#define POLICYCAP 348
+#define PERMISSIVE 349
+#define FILESYSTEM 350
+#define DEFAULT_USER 351
+#define DEFAULT_ROLE 352
+#define DEFAULT_TYPE 353
+#define DEFAULT_RANGE 354
+#define LOW_HIGH 355
+#define LOW 356
+#define HIGH 357
 
-
-
-
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-{
 
-/* Line 2068 of yacc.c  */
-#line 85 "policy_parse.y"
+union YYSTYPE
+{
+#line 93 "./policy_parse.y" /* yacc.c:1915  */
 
 	unsigned int val;
 	uintptr_t valptr;
 	void *ptr;
         require_func_t require_func;
 
+#line 265 "y.tab.h" /* yacc.c:1915  */
+};
 
-
-/* Line 2068 of yacc.c  */
-#line 241 "policy_parse.h"
-} YYSTYPE;
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+
 extern YYSTYPE yylval;
 
+int yyparse (void);
 
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */

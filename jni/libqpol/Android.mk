@@ -23,6 +23,7 @@ LOCAL_CFLAGS := -std=gnu99
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/$(bzip2_dir) \
 	$(LOCAL_PATH)/../include \
+	$(LOCAL_PATH)/../libselinux/include \
 	$(LOCAL_PATH)/../libsepol/include
 
 LOCAL_SRC_FILES := \
@@ -62,6 +63,6 @@ LOCAL_SRC_FILES := \
 	policy_scan.c \
 	glob.c
 
-LOCAL_STATIC_LIBRARIES := libbz2 libsepol
+LOCAL_STATIC_LIBRARIES := libbz2 libsepol libselinux
 
 include $(BUILD_STATIC_LIBRARY)

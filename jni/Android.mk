@@ -10,7 +10,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_SRC_FILES := \
 	secmds/seinfo.c
 
-LOCAL_STATIC_LIBRARIES := libapol libqpol libsepol
+LOCAL_STATIC_LIBRARIES := libapol libqpol libsepol libselinux
 
 include $(BUILD_EXECUTABLE)
 
@@ -45,3 +45,4 @@ $(call import-add-path, $(LOCAL_PATH))
 $(call import-module, libapol)
 $(call import-module, libqpol)
 $(call import-module, libsepol)
+$(call import-module, libselinux)
