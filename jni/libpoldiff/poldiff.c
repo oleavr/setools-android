@@ -391,10 +391,10 @@ void poldiff_destroy(poldiff_t ** diff)
 
 	type_map_destroy(&(*diff)->type_map);
 	attrib_summary_destroy(&(*diff)->attrib_diffs);
-	avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_ALLOW]);
-	avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_AUDITALLOW]);
-	avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_DONTAUDIT]);
-	avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_NEVERALLOW]);
+	poldiff_avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_ALLOW]);
+	poldiff_avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_AUDITALLOW]);
+	poldiff_avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_DONTAUDIT]);
+	poldiff_avrule_destroy(&(*diff)->avrule_diffs[AVRULE_OFFSET_NEVERALLOW]);
 	bool_destroy(&(*diff)->bool_diffs);
 	cat_destroy(&(*diff)->cat_diffs);
 	class_destroy(&(*diff)->class_diffs);

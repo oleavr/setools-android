@@ -36,7 +36,7 @@ extern "C"
  * Allocate and return a new poldiff_terule_summary_t object, used by
  * AV rule searches.
  *
- * @return A new rule summary.  The caller must call avrule_destroy()
+ * @return A new rule summary.  The caller must call poldiff_avrule_destroy()
  * afterwards.  On error, return NULL and set errno.
  */
 	poldiff_avrule_summary_t *avrule_create(void);
@@ -49,7 +49,7 @@ extern "C"
  * @param rs Reference to an rule summary to destroy.  The pointer
  * will be set to NULL afterwards.
  */
-	void avrule_destroy(poldiff_avrule_summary_t ** rs);
+	void poldiff_avrule_destroy(poldiff_avrule_summary_t ** rs);
 
 /**
  * Reset the state of AV allow rule differences.

@@ -551,13 +551,13 @@ poldiff_avrule_summary_t *avrule_create(void)
 		return NULL;
 	}
 	if ((rs->diffs = apol_vector_create(poldiff_avrule_free)) == NULL) {
-		avrule_destroy(&rs);
+		poldiff_avrule_destroy(&rs);
 		return NULL;
 	}
 	return rs;
 }
 
-void avrule_destroy(poldiff_avrule_summary_t ** rs)
+void poldiff_avrule_destroy(poldiff_avrule_summary_t ** rs)
 {
 	if (rs != NULL && *rs != NULL) {
 		apol_vector_destroy(&(*rs)->diffs);
@@ -579,7 +579,7 @@ static int avrule_reset(poldiff_t * diff, avrule_offset_e idx)
 {
 	int error = 0;
 
-	avrule_destroy(&diff->avrule_diffs[idx]);
+	poldiff_avrule_destroy(&diff->avrule_diffs[idx]);
 	diff->avrule_diffs[idx] = avrule_create();
 	if (diff->avrule_diffs[idx] == NULL) {
 		error = errno;
